@@ -1,7 +1,7 @@
 var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
   
-  makeDancer.call(this, top, left, timeBetweenSteps);
-
+  makeDancer.call(this, top, left, timeBetweenSteps + 1000);
+  this.$node = $('<span class="blinky-dancer"><img src="assets/GhostDancing.gif" class="blinky-dancer" alt="Dancing Ghost"></span>');
   this.setPosition(top, left);
   this.step();
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,

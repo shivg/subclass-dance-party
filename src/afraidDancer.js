@@ -1,7 +1,7 @@
 var makeAfraidDancer = function(top, left, timeBetweenSteps) {
   
   makeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="afraid-dancer"><img src="assets/giphy.gif" class="afraid-dancer" alt="Dancing Cat"></span>');
+  this.$node = $('<span class="afraid-dancer"><img src="assets/mummy.gif" class="afraid-dancer" alt="Dancing Cat"></span>');
 
   this.setPosition(top, left);
   this.step();

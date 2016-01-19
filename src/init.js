@@ -33,13 +33,29 @@ $(document).ready(function() {
     window.dancerObj.push(dancer);
   });
 
-  $('.lineUp').on('click', function (event) {
+    $('.lineUp').on('click', function (event) {
+      var width = $(window).width();
+      var height = $(window).height();
+      var vertical = Math.floor(height/12);
+      var horizLeft = Math.floor(width/3);
+      var horizRight = Math.floor(width*0.66);
+      var side = false;
     _.each(window.dancerObj, function(dancer) {
-      if (dancer.constructor === 'makeLonelyDancer') {
-        
+      console.log(dancer);
+      if (dancer.constructor === makeLonelyDancer) {
+        dancer.isActive = false;
       }
+      if (side) {
+        dancer.setPosition(vertical, horizLeft);
+        horizLeft = horizLeft - 80;
+      } else {        
+        dancer.setPosition(vertical, horizRight);
+        horizRight = horizRight + 80;
+      }
+      vertical = vertical + 50;
+      side = !side;
     });
-  });
+    });
 
   $( 'body' ).on('mousemove', function( event ) {
     // console.log($(event.target));

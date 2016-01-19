@@ -11,9 +11,9 @@ var makeLonelyDancer = function(top, left, timeBetweenSteps) {
 makeLonelyDancer.prototype = Object.create(makeDancer.prototype);
 makeLonelyDancer.prototype.constructor = makeLonelyDancer;
 
-makeLonelyDancer.stayStill = function() {
-  this.isActive = false;
-};
+// makeLonelyDancer.toggleMove = function() {
+//   this.isActive = !this.isActive;
+// };
 
 makeLonelyDancer.prototype.step = function() {
     var that = this;
@@ -57,7 +57,9 @@ makeLonelyDancer.prototype.step = function() {
       });
     }
 
-    if (this.isActive) {
+    if (that.isActive) {
       checkOtherDancers();
+    } else {
+      that.$node.stop();
     }
 };
