@@ -33,6 +33,46 @@ $(document).ready(function() {
 
   $('.lineUp').on('click', function (event) {
     lineUp();
-  })
+  });
+
+  $( 'body' ).on('mousemove', function( event ) {
+    console.log($(event.target));
+    if ($(event.target).hasClass('afraid-dancer')) {
+      // console.log($(this));
+      var top = (Math.random()*200) - 100;
+      var left = (Math.random()*300) - 150;
+      var height = $(window).height();
+      var width = $(window).width();
+
+      top = top > height || top < 0 ? Math.round(height/2) : top;
+      left = left > width || left < 0 ? Math.round(width/2) : left;
+      
+      $(event.target).animate({
+        top: "" + top,
+        left: "" + left
+      }, 1000);
+
+      setTimeout(function () {
+        $(this).stop();
+        }.bind(event.target), 1000);
+      }
+   });
+
+  //  var top = itemTop + 200;
+  //  var left = itemLeft+ 200;
+
+  //  top = top > height || top < 0 ? Math.round(height/2) : top;
+  //  left = left > width || left < 0 ? Math.round(width/2) : left;
+  
+  // function checkMouse(mouseX, mouseY) {
+  //   if (Math.abs(mouseX - itemLeft) < 600 && Math.abs(mouseY - itemTop) < 800){
+  //     console.log("animate");
+  //     console.log("top" + top);
+  //     that.$node.animate({
+  //       top: "" + top,
+  //       left: "" + left
+  //     });
+  //   }
+  // }
 });
 

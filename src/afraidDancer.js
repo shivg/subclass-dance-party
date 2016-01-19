@@ -18,30 +18,4 @@ makeAfraidDancer.prototype.step = function() {
 
 
     makeDancer.prototype.step.call(this);
-
-    $( 'body' ).mousemove(function( event ) {
-      var msg = "Handler for .mousemove() called at ";
-      msg += event.pageX + ", " + event.pageY;
-      // console.log(msg);  
-      checkMouse(event.pageX, event.pageY);
-    });
-
-    var top = itemTop + 200;
-    var left = itemLeft+ 200;
-    var height = $(window).height();
-    var width = $(window).width();
-
-    top = top > height || top < 0 ? Math.round(height/2) : top;
-    left = left > width || left < 0 ? Math.round(width/2) : left;
- 
-    function checkMouse(mouseX, mouseY) {
-      if (Math.abs(mouseX - itemLeft) < 50 && Math.abs(mouseY - itemTop) < 50){
-        console.log("animate");
-        console.log("top" + top);
-         that.$node.animate({
-              top: "" + top,
-              left: "" + left
-            });
-      }
-    }
 };

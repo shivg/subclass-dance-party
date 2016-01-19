@@ -33,3 +33,9 @@ body, a:link, a:visited, a:active{
   width: 90px;
   position:absolute;
 }
+
+.afraid-dancer {
+  position: absolute;
+  height: 180px;
+  width: 120px;
+}

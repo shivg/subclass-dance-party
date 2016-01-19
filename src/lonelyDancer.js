@@ -5,9 +5,6 @@ var makeLonelyDancer = function(top, left, timeBetweenSteps) {
 
   this.setPosition(top, left);
   this.step();
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
-
 };
 
 makeLonelyDancer.prototype = Object.create(makeDancer.prototype);
@@ -17,12 +14,8 @@ makeLonelyDancer.prototype.step = function() {
     var that = this;
     var thisOffset = that.$node.offset();
 
-    // call the old version of step at the beginning of any call to this new version of step
     makeDancer.prototype.step.call(this);
-    // toggle() is a jQuery method to show/hide the <span> tag.
-    // See http://api.jquery.com/category/effects/ for this and
-    // other effects you can use on a jQuery-wrapped html tag.
-    // this.$node.toggle();
+
     function checkOtherDancers() {
       _.each(window.dancers, function(jqNode) {
         var offset = jqNode.offset();
@@ -56,8 +49,6 @@ makeLonelyDancer.prototype.step = function() {
             }, 2000);
           }
         }
-        // console.log(diffTop);
-        // console.log(diffLeft);
       });
     }
 
