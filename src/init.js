@@ -58,21 +58,13 @@ $(document).ready(function() {
       }
    });
 
-  //  var top = itemTop + 200;
-  //  var left = itemLeft+ 200;
+  $( '.clear' ).click(function() {
+    _.each(window.dancers, function (node) {
+      $(node).remove();
+    });
+    window.dancers = [];
 
-  //  top = top > height || top < 0 ? Math.round(height/2) : top;
-  //  left = left > width || left < 0 ? Math.round(width/2) : left;
+  });
   
-  // function checkMouse(mouseX, mouseY) {
-  //   if (Math.abs(mouseX - itemLeft) < 600 && Math.abs(mouseY - itemTop) < 800){
-  //     console.log("animate");
-  //     console.log("top" + top);
-  //     that.$node.animate({
-  //       top: "" + top,
-  //       left: "" + left
-  //     });
-  //   }
-  // }
 });
 
