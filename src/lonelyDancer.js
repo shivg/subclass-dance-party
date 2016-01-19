@@ -1,6 +1,6 @@
-var makeLonelyDancer = function(top, left, timeBetweenSteps) {
+var LonelyDancer = function(top, left, timeBetweenSteps) {
   
-  makeDancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, timeBetweenSteps);
   this.$node = $('<span class="lonely-dancer"><img src="assets/giphy.gif" class="lonely-dancer" alt="Dancing Cat"></span>');
 
   this.setPosition(top, left);
@@ -8,18 +8,18 @@ var makeLonelyDancer = function(top, left, timeBetweenSteps) {
   this.isActive = true;
 };
 
-makeLonelyDancer.prototype = Object.create(makeDancer.prototype);
-makeLonelyDancer.prototype.constructor = makeLonelyDancer;
+LonelyDancer.prototype = Object.create(Dancer.prototype);
+LonelyDancer.prototype.constructor = LonelyDancer;
 
-// makeLonelyDancer.toggleMove = function() {
+// LonelyDancer.toggleMove = function() {
 //   this.isActive = !this.isActive;
 // };
 
-makeLonelyDancer.prototype.step = function() {
+LonelyDancer.prototype.step = function() {
     var that = this;
     var thisOffset = that.$node.offset();
 
-    makeDancer.prototype.step.call(this);
+    Dancer.prototype.step.call(this);
 
     function checkOtherDancers() {
       _.each(window.dancers, function(jqNode) {

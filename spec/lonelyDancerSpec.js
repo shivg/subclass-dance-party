@@ -6,7 +6,7 @@ describe("lonelyDancer", function() {
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
-    lonelyDancer = new makeLonelyDancer(10, 20, timeBetweenSteps);
+    lonelyDancer = new LonelyDancer(10, 20, timeBetweenSteps);
   });
 
   it("should have a jQuery $node object", function() {

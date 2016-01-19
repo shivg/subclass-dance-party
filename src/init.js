@@ -16,8 +16,7 @@ $(document).ready(function() {
      * A new object of the given type will be created and added
      * to the stage.
      */
-    var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
-
+    var dancerMakerFunctionName =$(this).data("dancer-maker-function-name");
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
@@ -42,27 +41,23 @@ $(document).ready(function() {
       var side = false;
     _.each(window.dancerObj, function(dancer) {
         console.log(dancer);
-        if (dancer.constructor === makeLonelyDancer) {
+        if (dancer.constructor === LonelyDancer) {
           dancer.isActive = false;
         }
-        dancer.$node.stop();
         if (side) {
           dancer.setPosition(vertical, horizLeft);
           horizLeft = horizLeft - 80;
-          // dancer.top  = dance.$node.offset().top;
         } else {        
           dancer.setPosition(vertical, horizRight);
           horizRight = horizRight + 80;
         }
-        vertical = vertical + 50;
+        vertical = vertical + 30;
         side = !side;
       });
     });
 
   $( 'body' ).on('mousemove', function( event ) {
-    // console.log($(event.target));
     if ($(event.target).hasClass('afraid-dancer')) {
-      // console.log($(this));
       var top = (Math.random()*200) - 100;
       var left = (Math.random()*300) - 150;
       var height = $(window).height();
