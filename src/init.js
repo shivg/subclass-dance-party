@@ -41,20 +41,22 @@ $(document).ready(function() {
       var horizRight = Math.floor(width*0.66);
       var side = false;
     _.each(window.dancerObj, function(dancer) {
-      console.log(dancer);
-      if (dancer.constructor === makeLonelyDancer) {
-        dancer.isActive = false;
-      }
-      if (side) {
-        dancer.setPosition(vertical, horizLeft);
-        horizLeft = horizLeft - 80;
-      } else {        
-        dancer.setPosition(vertical, horizRight);
-        horizRight = horizRight + 80;
-      }
-      vertical = vertical + 50;
-      side = !side;
-    });
+        console.log(dancer);
+        if (dancer.constructor === makeLonelyDancer) {
+          dancer.isActive = false;
+        }
+        dancer.$node.stop();
+        if (side) {
+          dancer.setPosition(vertical, horizLeft);
+          horizLeft = horizLeft - 80;
+          // dancer.top  = dance.$node.offset().top;
+        } else {        
+          dancer.setPosition(vertical, horizRight);
+          horizRight = horizRight + 80;
+        }
+        vertical = vertical + 50;
+        side = !side;
+      });
     });
 
   $( 'body' ).on('mousemove', function( event ) {
