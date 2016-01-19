@@ -1,36 +1,35 @@
-var makeLonelyDancer = function(top, left, timeBetweenSteps) {
+var makeAfraidDancer = function(top, left, timeBetweenSteps) {
   
   makeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="lonely-dancer"><img src="assets/giphy.gif" class="lonely-dancer" alt="Dancing Cat"></span>');
+  this.$node = $('<span class="afraid-dancer"><img src="assets/giphy.gif" class="afraid-dancer" alt="Dancing Cat"></span>');
 
   this.setPosition(top, left);
   this.step();
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
-
 };
 
-makeLonelyDancer.prototype = Object.create(makeDancer.prototype);
-makeLonelyDancer.prototype.constructor = makeLonelyDancer;
+makeAfraidDancer.prototype = Object.create(makeDancer.prototype);
+makeAfraidDancer.prototype.constructor = makeAfraidDancer;
 
-makeLonelyDancer.prototype.step = function() {
+makeAfraidDancer.prototype.step = function() {
     var that = this;
-    var thisOffset = that.$node.offset();
+    var itemOffset = that.$node.offset();
 
-    // call the old version of step at the beginning of any call to this new version of step
     makeDancer.prototype.step.call(this);
-    // toggle() is a jQuery method to show/hide the <span> tag.
-    // See http://api.jquery.com/category/effects/ for this and
-    // other effects you can use on a jQuery-wrapped html tag.
-    // this.$node.toggle();
+
+    $( 'body' ).mousemove(function( event ) {
+      var msg = "Handler for .mousemove() called at ";
+      msg += event.pageX + ", " + event.pageY;
+      console.log(msg);
+    });
+ 
     function checkOtherDancers() {
       _.each(window.dancers, function(jqNode) {
         var offset = jqNode.offset();
-        var diffTop = thisOffset.top - offset.top;
+        var diffTop = itemOffset.top - offset.top;
         var moveTop;
         var moveLeft;
         if (diffTop) {
-          var diffLeft = thisOffset.left - offset.left;
+          var diffLeft = itemOffset.left - offset.left;
           if (Math.abs(diffTop) <= 200 && Math.abs(diffLeft) <= 200){
             if (diffTop < 0){
               moveTop = -250;
@@ -56,10 +55,7 @@ makeLonelyDancer.prototype.step = function() {
             }, 2000);
           }
         }
-        // console.log(diffTop);
-        // console.log(diffLeft);
       });
     }
-
-    checkOtherDancers();
+    // checkOtherDancers();
 };
