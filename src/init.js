@@ -1,5 +1,6 @@
 $(document).ready(function() {
   window.dancers = [];
+  window.dancerObj = [];
 
   $(".addDancerButton").on("click", function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -29,14 +30,19 @@ $(document).ready(function() {
     );
     $('body').append(dancer.$node);
     window.dancers.push(dancer.$node);
+    window.dancerObj.push(dancer);
   });
 
   $('.lineUp').on('click', function (event) {
-    lineUp();
+    _.each(window.dancerObj, function(dancer) {
+      if (dancer.constructor === 'makeLonelyDancer') {
+        
+      }
+    });
   });
 
   $( 'body' ).on('mousemove', function( event ) {
-    console.log($(event.target));
+    // console.log($(event.target));
     if ($(event.target).hasClass('afraid-dancer')) {
       // console.log($(this));
       var top = (Math.random()*200) - 100;

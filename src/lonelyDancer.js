@@ -5,10 +5,15 @@ var makeLonelyDancer = function(top, left, timeBetweenSteps) {
 
   this.setPosition(top, left);
   this.step();
+  this.isActive = true;
 };
 
 makeLonelyDancer.prototype = Object.create(makeDancer.prototype);
 makeLonelyDancer.prototype.constructor = makeLonelyDancer;
+
+makeLonelyDancer.stayStill = function() {
+  this.isActive = false;
+};
 
 makeLonelyDancer.prototype.step = function() {
     var that = this;
@@ -52,5 +57,7 @@ makeLonelyDancer.prototype.step = function() {
       });
     }
 
-    checkOtherDancers();
+    if (this.isActive) {
+      checkOtherDancers();
+    }
 };
